@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>seata-order-server</module>
+        <module>seata-account-server</module>
+        <module>seata-storage-server</module>
+        <module>seata-business-server</module>
+        <module>seata-common-jar</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.appleyk</groupId>
+    <name>seata-spring-boot-demos</name>
+    <artifactId>seata-spring-boot-demos</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+    <description>使用seata分布式事务框架，结合SpringBoot，解决微服务之间业务互相调用时全局事务一致性的问题</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <springboot.verison>2.2.2.RELEASE</springboot.verison>
+        <java.version>1.8</java.version>
+        <mybatis.version>2.1.5</mybatis.version>
+        <mybatis-plus.version>2.3</mybatis-plus.version>
+        <mysql.version>8.0.17</mysql.version>
+        <nacos-client.verison>1.3.2</nacos-client.verison>
+        <seata.version>1.3.0</seata.version>
+    </properties>
+
+    <dependencies>
+
+        <!--支持全栈式Web开发，包括Tomcat和Spring-WebMVC-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+        <!--Spring Boot的核心启动器，包含了自动配置、日志和YAML-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+        <!--SpringBoot Maven插件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+        <!--单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper-spring-boot-starter -->
+        <!--Mybatis通用Mapper-->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+        <!--阿里巴巴分布式事务框架-->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>${seata.version}</version>
+        </dependency>
+
+        <!--阿里巴巴Nacos服务注册中心-->
+        <dependency>
+            <groupId>com.alibaba.nacos</groupId>
+            <artifactId>nacos-client</artifactId>
+            <version>${nacos-client.verison}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <!--mysql最新java驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
+        <!-- Feign是一种声明式、模板化的HTTP客户端,使得远程接口调用像本地调用一样方便，且使用简单-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
