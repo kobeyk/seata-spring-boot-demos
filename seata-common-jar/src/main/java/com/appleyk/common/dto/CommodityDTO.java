@@ -2,14 +2,20 @@ package com.appleyk.common.dto;
 
 import java.io.Serializable;
 
+/**
+ * 商品数据传输对象，对应商品的库存操作
+ */
 public class CommodityDTO implements Serializable {
 
     private Integer id;
 
+    /**商品唯一编码*/
     private String commodityCode;
 
+    /**商品名称*/
     private String name;
 
+    /**商品数量*/
     private Integer count;
 
     public Integer getId() {

@@ -3,12 +3,17 @@ package com.appleyk.common.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * 用户支付账户中心数据传输对象，对应用户下单后扣款操作
+ */
 public class AccountDTO implements Serializable {
 
     private Integer id;
 
-    private String userId;
+    /**用户标识*/
+    private Long userId;
 
+    /**账户余额*/
     private BigDecimal amount;
 
     public Integer getId() {
@@ -19,11 +24,11 @@ public class AccountDTO implements Serializable {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

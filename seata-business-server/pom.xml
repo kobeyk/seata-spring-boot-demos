@@ -14,11 +14,22 @@
     <description>业务服务模块，整个微服务业务的统一操作的入口</description>
 
     <dependencies>
+
         <dependency>
             <groupId>com.appleyk</groupId>
             <artifactId>seata-common-jar</artifactId>
             <version>${parent.version}</version>
         </dependency>
+
+        <!--阿里巴巴Sentinel，面向分布式服务架构的高可用流量防护组件-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>${springboot.verison}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

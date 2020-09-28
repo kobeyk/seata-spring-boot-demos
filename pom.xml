@@ -10,6 +10,7 @@
         <module>seata-storage-server</module>
         <module>seata-business-server</module>
         <module>seata-common-jar</module>
+        <module>seata-integral-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -73,17 +74,19 @@
         </dependency>
 
         <!--阿里巴巴分布式事务框架-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-seata -->
         <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
-            <version>${seata.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <version>${springboot.verison}</version>
         </dependency>
 
         <!--阿里巴巴Nacos服务注册中心-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
         <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-client</artifactId>
-            <version>${nacos-client.verison}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${springboot.verison}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -105,6 +108,26 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <!--解决项目build时，资源文件无法加载的问题-->
+                <!--如mybatis通用mapper对应的xml映射文件等，不需要过滤-->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

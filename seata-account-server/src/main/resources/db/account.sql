@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS `t_account`;
 CREATE TABLE `t_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(255) DEFAULT NULL COMMENT '用户标识',
+  `uid` bigint(20) DEFAULT NULL COMMENT '用户标识',
   `amount` double(14,2) DEFAULT '0.00' COMMENT '账户总金额',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -9,7 +9,7 @@ CREATE TABLE `t_account` (
 -- ----------------------------
 -- Records of t_account
 -- ----------------------------
-INSERT INTO `t_account` VALUES ('1', '1', '4000.00');
+INSERT INTO `t_account` VALUES ('1', 1001, '4000.00');
 
 -- 每个本地事务库，都需要建一张这个表
 DROP TABLE IF EXISTS `undo_log`;

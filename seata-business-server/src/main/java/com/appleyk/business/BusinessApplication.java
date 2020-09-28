@@ -2,8 +2,10 @@ package com.appleyk.business;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * <p>业务操作入口，启动类</p>
@@ -15,8 +17,10 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @date created on 16:19 2020/9/25
  */
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@EnableFeignClients
 public class BusinessApplication extends SpringBootServletInitializer {
+
     public static void main(String[] args) {
         SpringApplication.run(BusinessApplication.class,args);
     }

@@ -3,23 +3,31 @@ package com.appleyk.common.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+/**
+ * 业务数据传输对象，整个电商购买商品下单的总（操作）入口
+ */
 public class BusinessDTO implements Serializable {
 
-    private String userId;
+    /**用户标识*/
+    private Long userId;
 
+    /**商品编号*/
     private String commodityCode;
 
+    /**商品名称*/
     private String name;
 
+    /**商品数量*/
     private Integer count;
 
+    /**订单金额*/
     private BigDecimal amount;
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.appleyk.order.dao.mapper.OrderMapper">
+
+    <resultMap type="com.appleyk.order.dao.entity.OrderEntity" id="orderEntityMap">
+        <id property="id" column="id"/>
+        <result property = "orderNo" column = "order_no"/>
+        <result property = "uid" column = "uid"/>
+        <result property = "commodityCode" column = "commodity_code"/>
+        <result property = "count" column = "count"/>
+        <result property = "amount" column = "amount"/>
+    </resultMap>
+
+    <sql id="TABLE_COLUMNS">
+        id,uid,order_no,commodity_code,count,amount
+	</sql>
+
+</mapper>

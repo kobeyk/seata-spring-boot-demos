@@ -2,9 +2,9 @@ DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order_no` varchar(255) DEFAULT NULL COMMENT '订单编号',
-  `user_id` varchar(255) DEFAULT NULL COMMENT '用户标识',
+  `uid` bigint(20) DEFAULT NULL COMMENT '用户标识',
   `commodity_code` varchar(255) DEFAULT NULL COMMENT '商品编码，唯一',
-  `count` int(11) DEFAULT '0' COMMENT '库存数量',
+  `count` int(11) DEFAULT '0' COMMENT '商品数量',
   `amount` double(14,2) DEFAULT '0.00' COMMENT '订单金额',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
@@ -23,4 +23,4 @@ CREATE TABLE `undo_log` (
   `ext` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;E=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

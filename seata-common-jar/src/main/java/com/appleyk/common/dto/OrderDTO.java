@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 
+/**
+ * 订单数据传输对象，对应用户的下单操作
+ */
 public class OrderDTO implements Serializable {
 
     private String orderNo;
 
-    private String userId;
+    private Long userId;
 
     private String commodityCode;
 
@@ -20,15 +23,27 @@ public class OrderDTO implements Serializable {
         return orderNo;
     }
 
+    public OrderDTO(){
+
+    }
+
+    public OrderDTO(BusinessDTO businessDTO){
+        this.orderNo = "CN"+System.currentTimeMillis();
+        this.userId = businessDTO.getUserId();
+        this.commodityCode = businessDTO.getCommodityCode();
+        this.orderCount = businessDTO.getCount();
+        this.orderAmount = businessDTO.getAmount();
+    }
+
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
