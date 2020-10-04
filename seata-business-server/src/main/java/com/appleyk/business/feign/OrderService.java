@@ -1,5 +1,6 @@
 package com.appleyk.business.feign;
 
+import com.appleyk.business.feign.fallback.OrderServiceFallBack;
 import com.appleyk.common.dto.OrderDTO;
 import com.appleyk.common.response.ResponseResult;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @github https://github.com/kobeyk
  * @date created on 22:30 2020/9/28
  */
-@FeignClient(value = "order-server")
+@FeignClient(value = "order-server",fallback = OrderServiceFallBack.class)
 public interface OrderService {
 
     /**
@@ -26,7 +27,7 @@ public interface OrderService {
      * @return
      */
     @PostMapping(value = "/order/create")
-    ResponseResult create(@RequestBody OrderDTO dto);
+    ResponseResult create(@RequestBody OrderDTO dto) throws Exception;
 
     /**
      * 模拟订单查询

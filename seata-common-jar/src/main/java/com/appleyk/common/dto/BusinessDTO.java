@@ -62,4 +62,15 @@ public class BusinessDTO implements Serializable {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "BusinessDTO{" +
+                "userId=" + userId +
+                ", commodityCode='" + commodityCode + '\'' +
+                ", name='" + name + '\'' +
+                ", count=" + count +
+                ", amount=" + amount +
+                '}';
+    }
 }

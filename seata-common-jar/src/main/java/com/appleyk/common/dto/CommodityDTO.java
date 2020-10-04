@@ -18,6 +18,21 @@ public class CommodityDTO implements Serializable {
     /**商品数量*/
     private Integer count;
 
+    public CommodityDTO() {
+    }
+
+    public CommodityDTO(String commodityCode, String name, Integer count) {
+        this.commodityCode = commodityCode;
+        this.name = name;
+        this.count = count;
+    }
+
+    public CommodityDTO(BusinessDTO businessDTO) {
+        this.commodityCode = businessDTO.getCommodityCode();
+        this.name = businessDTO.getName();
+        this.count = businessDTO.getCount();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -48,5 +63,15 @@ public class CommodityDTO implements Serializable {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "CommodityDTO{" +
+                "id=" + id +
+                ", commodityCode='" + commodityCode + '\'' +
+                ", name='" + name + '\'' +
+                ", count=" + count +
+                '}';
     }
 }

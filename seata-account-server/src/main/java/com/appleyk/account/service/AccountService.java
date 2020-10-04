@@ -3,9 +3,10 @@ package com.appleyk.account.service;
 import com.appleyk.account.dao.entity.AccountEntity;
 import com.appleyk.account.dao.mapper.AccountMapper;
 import com.appleyk.common.dto.AccountDTO;
+import com.appleyk.common.helper.LoggerHelper;
+import io.seata.core.context.RootContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>用户支付中心业务层操作实现</p>
@@ -22,8 +23,8 @@ public class AccountService {
     @Autowired
     private AccountMapper accountMapper;
 
-    @Transactional
-    public boolean decreaseAmount(AccountDTO accountDTO){
+    public boolean decreaseAmount(AccountDTO accountDTO) throws Exception{
+        LoggerHelper.info("全局事务ID = "+ RootContext.getXID());
         return accountMapper.decreaseAmount(AccountEntity.createEntity(accountDTO)) > 0;
     }
 

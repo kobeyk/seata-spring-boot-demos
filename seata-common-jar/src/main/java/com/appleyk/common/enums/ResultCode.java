@@ -4,7 +4,7 @@ package com.appleyk.common.enums;
  * <p>结果代码枚举 -- 定义返回的结果状态码code和值name </p>
  *
  * @author appleyk
- * @version V.1.0.0
+ * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk
  * @date created on 上午 10:46 2019-4-27
  */

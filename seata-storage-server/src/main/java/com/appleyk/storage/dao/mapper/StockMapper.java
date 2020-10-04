@@ -1,7 +1,7 @@
 package com.appleyk.storage.dao.mapper;
 
 import com.appleyk.storage.dao.entity.StockEntity;
-import feign.Param;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 /**

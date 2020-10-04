@@ -1,6 +1,7 @@
 package com.appleyk.order.controller;
 
 import com.appleyk.common.dto.OrderDTO;
+import com.appleyk.common.helper.LoggerHelper;
 import com.appleyk.common.response.ResponseResult;
 import com.appleyk.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,14 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/create")
-    public ResponseResult createOrder   (@RequestBody OrderDTO orderDTO) throws Exception{
+    public ResponseResult createOrder(@RequestBody OrderDTO orderDTO) throws Exception{
+        LoggerHelper.info("订单创建接口调用，orderDto："+orderDTO);
         return ResponseResult.ok(orderService.createOrder(orderDTO));
     }
 
     @GetMapping("/query/{id}")
     public ResponseResult query(@PathVariable("id") Long id){
-        System.out.println("订单查询接口调用成功，订单id = "+id);
+        LoggerHelper.info("订单查询接口调用成功，订单id = "+id);
         return ResponseResult.ok("订单id = "+id);
     }
 

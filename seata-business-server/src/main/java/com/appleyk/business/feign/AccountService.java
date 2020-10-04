@@ -26,7 +26,7 @@ public interface AccountService {
      * @return
      */
     @PostMapping("/account/amount/decrease")
-    ResponseResult decreaseAmount(@RequestBody AccountDTO accountDTO);
+    ResponseResult decreaseAmount(@RequestBody AccountDTO accountDTO) throws Exception;
 
     /**
      * 模拟账户查询

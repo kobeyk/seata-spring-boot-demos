@@ -15,4 +15,10 @@
         id,uid,order_no,commodity_code,count,amount
 	</sql>
 
+    <insert id="createOrder">
+        insert into t_order(uid,order_no,commodity_code,count,amount)
+         values (#{entity.uid},#{entity.orderNo},#{entity.commodityCode},#{entity.count},
+         #{entity.amount})
+    </insert>
+
 </mapper>

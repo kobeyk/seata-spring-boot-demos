@@ -1,5 +1,6 @@
 package com.appleyk.integral.controller;
 
+import com.appleyk.common.helper.LoggerHelper;
 import com.appleyk.common.response.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class IntegralController {
     public ResponseResult add(@PathVariable("uid") Long uid,
                               @PathVariable("integral") Integer integral){
         String message = "用户【"+uid+"】成功加了【"+integral+"】积分";
-        System.out.println(message);
+        LoggerHelper.info(message);
         return ResponseResult.ok(message);
     }
 

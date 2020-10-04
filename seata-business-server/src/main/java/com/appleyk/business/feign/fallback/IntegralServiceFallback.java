@@ -1,11 +1,12 @@
 package com.appleyk.business.feign.fallback;
 
 import com.appleyk.business.feign.IntegralService;
+import com.appleyk.common.helper.LoggerHelper;
 import com.appleyk.common.response.ResponseResult;
 import org.springframework.stereotype.Service;
 
 /**
- * <p></p>
+ * <p>积分服务，降级回调实现</p>
  *
  * @author appleyk
  * @version V.0.1.1
@@ -25,8 +26,8 @@ public class IntegralServiceFallback implements IntegralService {
     @Override
     public ResponseResult add(Long uid,Integer integral) {
         // 记录降级日志，后续进行补偿
-        System.out.println("调用积分服务失败，开启日志，记录降级处理信息，userId = "+
+        LoggerHelper.info("调用积分服务失败，开启日志，记录降级处理信息，userId = "+
                 uid+",要加的积分 = "+integral);
-        return ResponseResult.fail("调用积分服务失败！");
+        return ResponseResult.ok("积分服务繁忙，请稍候再试（言外之意：积分服务要么挂了要么调用失败！！！");
     }
 }

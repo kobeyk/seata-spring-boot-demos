@@ -12,7 +12,7 @@ import java.util.Date;
  * <p>响应结果包装类</p>
  *
  * @author appleyk
- * @version V.1.0.0
+ * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk
  * @date created on 上午 9:00 2019-4-27
  */
@@ -26,7 +26,7 @@ public class ResponseResult  {
 
     /** 响应结果对应的（包含）的数据，空的话不反序列话*/
     @JsonInclude(value = Include.NON_NULL)
-    private  Object data;
+    private Object data;
 
     /**
      * 响应时间
@@ -46,7 +46,7 @@ public class ResponseResult  {
         this.data = null;
     }
 
-    public ResponseResult(Integer status ,String message,Object data){
+    public ResponseResult(Integer status,String message,Object data){
         this.status = status;
         this.message = message;
         this.data = data;

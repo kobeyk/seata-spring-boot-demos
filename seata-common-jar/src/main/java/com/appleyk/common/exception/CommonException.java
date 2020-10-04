@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
  * <p>自定义通用异常类</p>
  *
  * @author appleyk
- * @version V.1.0.0
+ * @version V.0.1.1
  * @blob https://blog.csdn.net/appleyk
  * @date created on 上午 10:59 2019-4-27
  */
@@ -19,6 +19,12 @@ public class CommonException extends Exception{
 
     /**结果消息*/
     private String message;
+
+    public CommonException(String message){
+        super(message);
+        this.resultCode = ResultCode.FAIL;
+        this.message = message;
+    }
 
     public CommonException(ResultCode resultCode,String message){
         super(message);
@@ -59,7 +65,7 @@ public class CommonException extends Exception{
     public ResponseResult buildResult(){
         Integer code = this.resultCode.getCode();
         String name = this.resultCode.getMessage();
-        return new ResponseResult(HttpStatus.BAD_REQUEST.value(),this.message , new ResultError(code, name));
+        return new ResponseResult(HttpStatus.BAD_REQUEST.value(),this.message,new ResultError(code, name));
     }
 
 }

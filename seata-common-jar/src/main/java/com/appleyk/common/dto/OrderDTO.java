@@ -27,6 +27,14 @@ public class OrderDTO implements Serializable {
 
     }
 
+    public OrderDTO(String orderNo, Long userId, String commodityCode, Integer orderCount, BigDecimal orderAmount) {
+        this.orderNo = orderNo;
+        this.userId = userId;
+        this.commodityCode = commodityCode;
+        this.orderCount = orderCount;
+        this.orderAmount = orderAmount;
+    }
+
     public OrderDTO(BusinessDTO businessDTO){
         this.orderNo = "CN"+System.currentTimeMillis();
         this.userId = businessDTO.getUserId();
@@ -69,5 +77,16 @@ public class OrderDTO implements Serializable {
 
     public void setOrderAmount(BigDecimal orderAmount) {
         this.orderAmount = orderAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDTO{" +
+                "orderNo='" + orderNo + '\'' +
+                ", userId=" + userId +
+                ", commodityCode='" + commodityCode + '\'' +
+                ", orderCount=" + orderCount +
+                ", orderAmount=" + orderAmount +
+                '}';
     }
 }

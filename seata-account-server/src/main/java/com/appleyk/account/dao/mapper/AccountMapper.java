@@ -1,7 +1,7 @@
 package com.appleyk.account.dao.mapper;
 
 import com.appleyk.account.dao.entity.AccountEntity;
-import feign.Param;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -14,5 +14,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @date created on 14:25 2020/9/27
  */
 public interface AccountMapper extends Mapper<AccountEntity> {
-    Integer decreaseAmount(@Param("entity") AccountEntity account);
+    Integer decreaseAmount(@Param("account") AccountEntity account);
 }

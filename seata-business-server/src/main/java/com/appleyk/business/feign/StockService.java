@@ -26,7 +26,15 @@ public interface StockService {
      * @return
      */
     @PostMapping("/stock/reduce")
-    ResponseResult reduce(@RequestBody CommodityDTO commodityDTO);
+    ResponseResult reduce(@RequestBody CommodityDTO commodityDTO) throws Exception;
+
+    /**
+     * 减库存接口（手动模拟异常，模拟分支事务执行异常时，TM发起全局回滚操作）
+     * @param commodityDTO 商品数据传输对象
+     * @return
+     */
+    @PostMapping("/stock/reduce/exception")
+    ResponseResult reduce2(@RequestBody CommodityDTO commodityDTO) throws Exception;
 
     /***
      * 模拟测试商品信息查询

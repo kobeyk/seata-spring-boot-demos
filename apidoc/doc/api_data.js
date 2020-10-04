@@ -1,0 +1,263 @@
+define({ "api": [
+  {
+    "type": "GET",
+    "url": "/business/order/query1/{id}",
+    "title": "订单查询接口（1）",
+    "name": "orderQuery1",
+    "group": "1.Order",
+    "version": "v0.1.1",
+    "description": "<p>使用RestTemplate模板(服务地址写死)，进行远程接口调用，实现按订单id查询订单信息的功能</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "id",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单标识（ID）</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "获取订单信息:",
+          "content": "/business/order/query1/1",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"status\": 200,\n\"message\": \"成功\",\n\"data\": \"订单id = 1\",\n\"timeStamp\": \"2020-10-04 23:02:37\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/service.java",
+    "groupTitle": "1.Order"
+  },
+  {
+    "type": "GET",
+    "url": "/business/order/query2/{id}",
+    "title": "订单查询接口（2）",
+    "name": "orderQuery2",
+    "group": "1.Order",
+    "version": "v0.1.1",
+    "description": "<p>使用RestTemplate模板（服务地址使用服务的逻辑名称），进行远程接口调用，实现按订单id查询订单信息的功能</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "id",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单标识（ID）</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "获取订单信息::",
+          "content": "/business/order/query2/2",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"status\": 200,\n\"message\": \"成功\",\n\"data\": \"订单id = 2\",\n\"timeStamp\": \"2020-10-03 21:56:46\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/service.java",
+    "groupTitle": "1.Order"
+  },
+  {
+    "type": "GET",
+    "url": "/business/order/query3/{id}",
+    "title": "订单查询接口（3）",
+    "name": "orderQuery3",
+    "group": "1.Order",
+    "version": "v0.1.1",
+    "description": "<p>使用Feign组件（服务地址使服务的逻辑名称），进行远程接口调用，实现按订单id查询订单信息的功能</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "id",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单标识（ID）</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "获取订单信息:",
+          "content": "/business/order/query3/3",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"status\": 200,\n\"message\": \"成功\",\n\"data\": \"订单id = 3\",\n\"timeStamp\": \"2020-10-03 21:51:51\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Fail-Response[服务降级处理]:",
+          "content": "{\n\"status\": 200,\n\"message\": \"成功\",\n\"data\": \"订单服务繁忙，请稍候再试（言外之意：订单服务要么挂了要么调用失败！！！\",\n\"timeStamp\": \"2020-10-03 21:36:49\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/service.java",
+    "groupTitle": "1.Order"
+  },
+  {
+    "type": "POST",
+    "url": "/business/commodity/buy",
+    "title": "下单/购买商品（正常）",
+    "name": "commodity_buy",
+    "group": "2.Commodity",
+    "description": "<p>正常下单购买商品（全局提交）：从创建订单、账户扣款到用户积分增加，再到商品对应的库存减少服务的调用； 主要模拟全局事务的注册（XID），以及在各个微服务模块的接口调用均正常的情况下， 由TM（事务管理者）发起全局事务的提交，最终保证微服务模块之间互相调用下的全局事务一致性（全部提交）！</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>用户标识（ID）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "commodityCode",
+            "description": "<p>商品唯一编码（一个商品对应一个唯一的商品号）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>私钥密码，非空</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "count",
+            "description": "<p>购买商品的数量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>购买商品的总价</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "params-Json:",
+          "content": "{\n\"userId\":1001,\n\"commodityCode\":\"C201901140001\",\n\"name\":\"水杯\",\n\"count\":2,\n\"amount\":20.0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "v0.1.1",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"status\": 200,\n\"message\": \"成功\",\n\"data\": true,\n\"timeStamp\": \"2020-10-04 22:59:38\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/service.java",
+    "groupTitle": "2.Commodity"
+  },
+  {
+    "type": "POST",
+    "url": "/business/commodity/buy/exception",
+    "title": "下单/购买商品（异常）",
+    "name": "commodity_buy_excep",
+    "group": "2.Commodity",
+    "description": "<p>异常下单购买商品（全局回滚）：从创建订单、账户扣款到用户积分增加，再到商品对应的库存减少服务的调用； 主要模拟全局事务的注册（XID），以及在各个微服务模块的接口调用出现其中一个或多个服务异常的情况下， 由TM（事务管理者）发起全局事务的回滚，最终保证微服务模块之间互相调用下的全局事务一致性（全部回滚）！</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Long",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>用户标识（ID）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "commodityCode",
+            "description": "<p>商品唯一编码（一个商品对应一个唯一的商品号）</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>私钥密码，非空</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": false,
+            "field": "count",
+            "description": "<p>购买商品的数量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "amount",
+            "description": "<p>购买商品的总价</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "params-Json:",
+          "content": "{\n\"userId\":1001,\n\"commodityCode\":\"C201901140001\",\n\"name\":\"水杯\",\n\"count\":2,\n\"amount\":20.0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "v0.1.1",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n\"status\": 400,\n\"message\": \"失败\",\n\"data\": \"[500] during [POST] to [http://storage-server/stock/reduce/exception] [StockService#reduce2(CommodityDTO)]: [{\\\"timestamp\\\":\\\"2020-10-04T15:16:15.596+0000\\\",\\\"status\\\":500,\\\"error\\\":\\\"Internal Server Error\\\",\\\"message\\\":\\\"/ by zero\\\",\\\"path\\\":\\\"/stock/reduce/exception\\\"}]\",\n\"timeStamp\": \"2020-10-04 23:16:15\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "src/service.java",
+    "groupTitle": "2.Commodity"
+  }
+] });

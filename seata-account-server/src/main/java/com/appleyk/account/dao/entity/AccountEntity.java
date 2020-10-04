@@ -54,4 +54,5 @@ public class AccountEntity {
     public void setAmount(Double amount) {
         this.amount = amount;
     }
+
 }

@@ -2,6 +2,7 @@ package com.appleyk.account.controller;
 
 import com.appleyk.account.service.AccountService;
 import com.appleyk.common.dto.AccountDTO;
+import com.appleyk.common.helper.LoggerHelper;
 import com.appleyk.common.response.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +30,14 @@ public class AccountController {
      * @return 响应结果
      */
     @PostMapping("/amount/decrease")
-    public ResponseResult decreaseAmount(@RequestBody AccountDTO accountDTO){
+    public ResponseResult decreaseAmount(@RequestBody AccountDTO accountDTO) throws Exception{
+        LoggerHelper.info("扣款接口调用，accountDto："+accountDTO);
         return ResponseResult.ok(accountService.decreaseAmount(accountDTO));
     }
 
     @GetMapping("/query/{uid}")
     public ResponseResult query(@PathVariable("uid") Long uid){
-        System.out.println("账户查询接口调用成功，账户uid = "+uid);
+        LoggerHelper.info("账户查询接口调用成功，账户uid = "+uid);
         return ResponseResult.ok("账户uid = "+uid);
     }
 

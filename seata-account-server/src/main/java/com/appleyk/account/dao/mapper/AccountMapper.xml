@@ -12,8 +12,8 @@
         id,uid,amount
 	</sql>
 
-    <update id="decreaseAmount" parameterType="com.appleyk.account.dao.entity.AccountEntity">
-        update t_account set amount = #{account.amount} - amount where uid = #{account.uid}
+    <update id="decreaseAmount">
+        update t_account set amount = amount - #{account.amount}  where uid = #{account.uid}
     </update>
 
 </mapper>

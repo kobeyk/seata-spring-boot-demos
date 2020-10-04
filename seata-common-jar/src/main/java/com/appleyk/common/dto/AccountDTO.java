@@ -16,6 +16,18 @@ public class AccountDTO implements Serializable {
     /**账户余额*/
     private BigDecimal amount;
 
+    public AccountDTO(){}
+
+    public AccountDTO(Long userId, BigDecimal amount) {
+        this.userId = userId;
+        this.amount = amount;
+    }
+
+    public AccountDTO(BusinessDTO businessDTO) {
+        this.userId = businessDTO.getUserId();
+        this.amount = businessDTO.getAmount();
+    }
+
     public Integer getId() {
         return id;
     }
@@ -38,5 +50,14 @@ public class AccountDTO implements Serializable {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountDTO{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", amount=" + amount +
+                '}';
     }
 }

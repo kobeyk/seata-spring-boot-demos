@@ -1,6 +1,7 @@
 package com.appleyk.order.dao.mapper;
 
 import com.appleyk.order.dao.entity.OrderEntity;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
@@ -13,4 +14,5 @@ import tk.mybatis.mapper.common.Mapper;
  * @date created on 21:48 2020/9/28
  */
 public interface OrderMapper extends Mapper<OrderEntity> {
+    Integer createOrder(@Param("entity") OrderEntity orderEntity);
 }

@@ -2,6 +2,8 @@ package com.appleyk.order.dao.entity;
 
 import com.appleyk.common.dto.OrderDTO;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,6 +20,7 @@ import javax.persistence.Table;
 public class OrderEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Integer id;
     /**订单编号*/
     public String orderNo;
