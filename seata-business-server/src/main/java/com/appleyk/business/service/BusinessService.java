@@ -44,7 +44,7 @@ public class BusinessService {
     @Autowired
     private IntegralService integralService;
 
-    @GlobalTransactional(timeoutMills = 300000,name = "product-transaction-sample",
+    @GlobalTransactional(timeoutMills = 30000,name = "product-transaction-sample",
     rollbackFor = {CommonException.class,Exception.class})
     public boolean buy(BusinessDTO businessDTO) throws Exception{
         LoggerHelper.info("开始全局事务，XID = " + RootContext.getXID());
